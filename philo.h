@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/11 16:09:47 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/01/12 07:57:05 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct t_philosopher_data
 	int	id;
 	int	t_die;
 	int	t_eat;
-	int	i_sleep;
-	int	r_ent;
+	int	t_sleep;
+	int	r_eat;
+	int fork_left;
+	int fork_right;
 	struct t_philosopher_data *next;
 }	t_philo;
 
@@ -46,8 +48,12 @@ typedef struct t_enviroment
 /*philo*/
 int	argument_check(int ac, char **av);
 void	creat_philo(int ac, char **av, t_env *env);
+void	init_philo(int ac, char **av, t_env *env);
 
 /*libf*/
 int	ft_atoi(const char *str);
+
+/*debug*/
+void	show_philo(t_env *env, t_philo *h);
 
 # endif

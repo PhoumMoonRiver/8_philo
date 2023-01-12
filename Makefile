@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/01/11 16:16:26 by njerasea         ###   ########.fr        #
+#    Updated: 2023/01/12 06:13:24 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,20 +15,20 @@ NAME = philo
 SRCS = 	philo.c\
 		error_check.c\
 		creat_philo.c\
-		libft/ft_atoi.c
+		libft/ft_atoi.c\
+		debug/link_list1.c
 
 CC = gcc -Wall -Wextra -Werror
-
 RM = rm -rf
-
-$(NAME):
-	$(CC) $(SRCS) -o $(NAME)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	$(CC) -o $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(NAME)
+	$(RM) *.o
 
 fclean: clean
 	$(RM) $(NAME)
