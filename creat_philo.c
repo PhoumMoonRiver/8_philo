@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:32:21 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/12 07:57:15 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/01/19 15:25:56 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@ void	creat_philo(int ac, char **av, t_env *env)
 	t_philo *h;
 
 	h = NULL;
-	env->p = (t_philo *)malloc(sizeof(t_philo));
-	if (!env->p)
-		return ;
-	env->n_philo = atoi(av[1]);
+	env->n_philo = ft_atoi(av[1]);
 	env->i = 1;
 	while (env->i <= env->n_philo)
 	{
+		env->p = (t_philo *)malloc(sizeof(t_philo));
+		if (!env->p)
+			return ;
 		env->p->next = h;
 		init_philo(ac, av, env);
 		h = env->p;
-printf("===> |%d|\n", h->id);
 		env->i++;
 	}
 	show_philo(env, h);
