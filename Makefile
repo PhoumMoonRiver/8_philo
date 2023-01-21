@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/01/20 15:18:29 by njerasea         ###   ########.fr        #
+#    Updated: 2023/01/21 12:47:22 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = philo
 SRCS = 	philo.c\
 		error_check.c\
 		process/keep_input.c\
+		process/creat.c\
 		libft/ft_atoi.c\
 		debug/link_list1.c
 
@@ -24,8 +25,11 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+$(NAME):
+	$(CC) -o $(NAME) $(SRCS)
+
+#$(NAME): $(OBJS)
+#	$(CC) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
