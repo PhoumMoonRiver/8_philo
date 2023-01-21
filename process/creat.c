@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   creat.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 14:06:14 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/20 16:37:37 by njerasea         ###   ########.fr       */
+/*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
+/*   Updated: 2023/01/20 16:41:35 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.c"
 
-int	main(int ac, char **av)
+void	creat_thread(t_env *env)
 {
-	t_env	env;
-
-	if ((ac == 5 || ac == 6) && argument_check(ac, av) != 0)
+	env->i = 0;
+	while (env->i < env->n_philo)
 	{
-		keep_input_to_list(ac, av, &env);
-		creat_env(&env);
+		env->thread = (pthread_t *)malloc(sizeof(t_philo));
+		if (!env->thread)
+			return ;
+		
 	}
-	else
-		printf("input not correct\n");
-	return (0);
+}
+
+void	creat_env(t_env *env)
+{
+	creat_thread(env);
 }

@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/01/15 10:11:37 by njerasea         ###   ########.fr        #
+#    Updated: 2023/01/20 15:18:29 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 SRCS = 	philo.c\
 		error_check.c\
-		creat_philo.c\
+		process/keep_input.c\
 		libft/ft_atoi.c\
 		debug/link_list1.c
 

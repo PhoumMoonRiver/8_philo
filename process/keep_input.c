@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creat_philo.c                                      :+:      :+:    :+:   */
+/*   keep_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 15:32:21 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/19 15:25:56 by njerasea         ###   ########.fr       */
+/*   Created: 2023/01/20 15:17:26 by njerasea          #+#    #+#             */
+/*   Updated: 2023/01/20 15:23:38 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.h"
 
-void	creat_philo(int ac, char **av, t_env *env)
-{
-	t_philo *h;
-
-	h = NULL;
-	env->n_philo = ft_atoi(av[1]);
-	env->i = 1;
-	while (env->i <= env->n_philo)
-	{
-		env->p = (t_philo *)malloc(sizeof(t_philo));
-		if (!env->p)
-			return ;
-		env->p->next = h;
-		init_philo(ac, av, env);
-		h = env->p;
-		env->i++;
-	}
-	show_philo(env, h);
-}
-
-void	init_philo(int ac, char **av, t_env *env)
+void	init_list_of_philo(int ac, char **av, t_env *env)
 {
 	env->p->id = env->i;
 	env->p->t_die = atoi(av[2]);
@@ -47,4 +27,23 @@ void	init_philo(int ac, char **av, t_env *env)
 		env->p->fork_right = 0;
 	else
 		env->p->fork_right = env->p->id;
+}
+
+void	keep_input_to_list(int ac, char **av, t_env *env)
+{
+	t_philo *h;
+
+	h = NULL;
+	env->n_philo = ft_atoi(av[1]);
+	env->i = 1;
+	while (env->i <= env->n_philo)
+	{
+		env->p = (t_philo *)malloc(sizeof(t_philo));
+		if (!env->p)
+			return ;
+		env->p->next = h;
+		init_list_of_philo(ac, av, env);
+		h = env->p;
+		env->i++;
+	}
 }
