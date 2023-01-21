@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/21 12:34:08 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:12:01 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct t_philosopher_data
 	int	r_eat;
 	int	fork_left;
 	int	fork_right;
-	pthread_t	thread;
+	pthread_t	my_thread;
+	pthread_mutex_t my_mutex;
 	struct t_philosopher_data *next;
 }	t_philo;
 
@@ -49,6 +50,7 @@ typedef struct t_enviroment
 
 /*philo*/
 int	argument_check(int ac, char **av);
+int	check_digit(char **av);
 void	init_list_of_philo(int ac, char **av, t_env *env);
 void	keep_input_to_list(int ac, char **av, t_env *env);
 void	creat_env(t_env *env);
