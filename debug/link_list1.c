@@ -1,13 +1,16 @@
 #include "../philo.h"
 
-void	show_philo(t_env *env, t_philo *h)
+void	show_philo(t_env *env)
 {
-	env->p = h;
-	while (env->p)
+	int i;
+
+	i = 0;
+	while (env->p && i < 10)
 	{
 		printf("%d\n", env->p->id);
 		if (env->p->next == NULL)
-			return ;
+			break ;
 		env->p = env->p->next;
+		i++;
 	}
 }

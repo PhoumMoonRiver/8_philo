@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/24 19:58:51 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:25:58 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct t_philosopher_data
 {
 	int	i;
 	int	id;
+	int head;
 	int	t_die;
 	int	t_eat;
 	int	t_sleep;
@@ -40,23 +41,16 @@ typedef struct t_philosopher_data
 	long long	current_time2;
 	pthread_t	thread_philo;
 	pthread_mutex_t mutex_fork;
+	pthread_mutex_t mutex_door;
 	struct timeval time;
 	struct t_philosopher_data *next;
 }	t_philo;
 
 typedef struct t_enviroment
 {
-	t_philo	*p;
-	pthread_mutex_t mutex_door;
-	int	n_philo;
 	int	i;
-	/*
-	int t_begin; // เวลาเริ่ม
-	int r_eat; // จำนวนครั้งที่กิน
-	int t_present; // เวลาปัจจุบัน
-	int ur_eat; // เวลาอัพเดททุกครั้งที่กิน
-	int flag_die; // ธงสัญญาณบอกว่าตายแย้วววว
-	*/
+	int	n_philo;
+	t_philo	*p;
 }	t_env;
 
 /*philo*/
@@ -65,6 +59,8 @@ int	check_digit(char **av);
 int	create_thread(t_env *env);
 int	create_mutex(t_env *env);
 int	create_env(t_env *env);
+int	create_multi_thread(t_env *env);
+int	routine_eat(t_philo *p);
 long long	ft_gettime(t_philo *p);
 void	init_list_of_philo(int ac, char **av, t_env *env);
 void	keep_input_to_list(int ac, char **av, t_env *env);
@@ -75,6 +71,6 @@ void	ft_print_philo(char *str, long long time, int id);
 int	ft_atoi(const char *str);
 
 /*debug*/
-void	show_philo(t_env *env, t_philo *h);
+void	show_philo(t_env *env);
 
 # endif

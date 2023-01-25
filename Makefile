@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/01/24 16:53:48 by njerasea         ###   ########.fr        #
+#    Updated: 2023/01/25 13:40:40 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = 	philo.c\
 		process/keep_input.c\
 		process/creat.c\
 		process/gettime.c\
+		routine/routine_of_philo.c\
 		libft/ft_atoi.c\
 		libft/ft_print_philo.c\
 		debug/link_list1.c
