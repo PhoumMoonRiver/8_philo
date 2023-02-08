@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/25 17:25:58 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/08 06:19:29 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ long long	ft_gettime(t_philo *p);
 void	init_list_of_philo(int ac, char **av, t_env *env);
 void	keep_input_to_list(int ac, char **av, t_env *env);
 void	*routine(void *env_input);
-void	ft_print_philo(char *str, long long time, int id);
 
 /*libf*/
 int	ft_atoi(const char *str);
+int	ft_free_list(t_env *env);
+void	ft_print_philo(char *str, long long time, int id);
 
 /*debug*/
 void	show_philo(t_env *env);

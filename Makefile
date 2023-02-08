@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/01/25 13:40:40 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/08 07:17:53 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = 	philo.c\
 		routine/routine_of_philo.c\
 		libft/ft_atoi.c\
 		libft/ft_print_philo.c\
+		libft/ft_free_list.c\
 		debug/link_list1.c
 
 CC = gcc -Wall -Wextra -Werror
@@ -47,5 +48,11 @@ b: re
 
 c: re
 	./philo 1 100 50 40
+
+e: re
+	./philo 0 100 50 40
+
+v: re
+	valgrind --leak-check=full ./philo 5 100 50 40
 
 .PHONY: all clean fclean re

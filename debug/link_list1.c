@@ -8,8 +8,6 @@ void	show_philo(t_env *env)
 	while (env->p && i < 10)
 	{
 		printf("%d\n", env->p->id);
-		if (env->p->next == NULL)
-			break ;
 		env->p = env->p->next;
 		i++;
 	}

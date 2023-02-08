@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/25 14:07:28 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/08 06:21:09 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ int	create_env(t_env *env)
 		ft_print_philo(FORK, ft_gettime(env->p), env->p->id);
 		usleep(env->p->t_die * 1000);
 		ft_print_philo(DIE, env->p->t_die, env->p->id);
-		return (1);
+		return (0);
 	}
-	if (create_mutex(env) == 1)
-		return (1);
-	if (create_thread(env) == 1)
-		return (1);
-	return (0);
+	// if (create_mutex(env) == 1)
+	// 	return (1);
+	// if (create_thread(env) == 1)
+	// 	return (1);
+	return (1);
 }

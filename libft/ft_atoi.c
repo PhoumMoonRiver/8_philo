@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:47:19 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/07 17:58:04 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/08 05:59:42 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str)
 	if (res * sign > INT_MAX || res * sign < INT_MIN)
 	{
 		printf("over int\n");
-		exit(0);
+		return (-1);
 	}
 	return (res * sign);
 }

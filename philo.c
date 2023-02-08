@@ -16,11 +16,11 @@ int	main(int ac, char **av)
 {
 	t_env	env;
 
-	if ((ac == 5 || ac == 6) && argument_check(ac, av) != 0)
+	if ((ac == 5 || ac == 6) && argument_check(ac, av) == 0)
 	{
 		keep_input_to_list(ac, av, &env);
 		if (create_env(&env) == 1)
-			return (1); //free link list
+			ft_free_list(&env);
 	}
 	else
 		printf("input not correct\n");
