@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/02/08 07:17:53 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/08 20:50:37 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,6 @@ e: re
 	./philo 0 100 50 40
 
 v: re
-	valgrind --leak-check=full ./philo 5 100 50 40
+	valgrind --leak-check=full --show-leak-kinds=all ./philo 5 100 50 40
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 06:11:05 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/08 07:15:23 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/08 21:16:34 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 int	ft_free_list(t_env *env)
 {
+	t_philo *first;
 	int	i;
 
-	i = 0;
-	if (env)
+	i = 1;
+	if (env->p)
 	{
-		while (i < env->n_philo)
+		while (i <= env->n_philo)
 		{
+			first = env->p->next;
 			free (env->p);
-			env->p = env->p->next;
+			env->p = first;
 			i++;
 		}
 	}
