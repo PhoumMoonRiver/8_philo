@@ -6,18 +6,42 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:36:10 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 13:35:37 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:49:15 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-long long	ft_gettime(t_philo *p)
+long	ft_gettime_in_time(void)
 {
 	struct timeval gettime;
-	long long time;
+
+	gettimeofday(&gettime, NULL);
+	return ((gettime.tv_sec * 1000) + (gettime.tv_usec / 1000));
+}
+
+void	ft_usleep_get_die(int time, int t_die, int *alive)
+{
+	long get_time;
+
+	get_time = ft_gettime_in_time();
+	while (ft_gettime_in_time() - get_time < (long)time)
+	{
+		if (ft_gettime_in_time() - get_time >= (long)t_die)
+		{
+			*alive = 1;
+			return ;
+		}
+		usleep(500);
+	}
+}
+
+long	ft_gettime(t_philo *p)
+{
+	struct timeval gettime;
+	long time;
 
 	gettimeofday(&gettime, NULL);
 	time = (gettime.tv_sec * 1000) + (gettime.tv_usec / 1000);
-	return (time - ((p->time_eat.tv_sec * 1000) + (p->time_eat.tv_usec / 1000)));
+	return (time - ((p->time.tv_sec * 1000) + (p->time.tv_usec / 1000)));
 }

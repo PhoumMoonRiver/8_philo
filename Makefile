@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/02/09 13:33:38 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/09 17:18:48 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = 	philo.c\
 		process/creat.c\
 		process/gettime.c\
 		process/die.c\
+		process/manage_thread_mutex.c\
 		routine/routine_of_philo.c\
 		libft/ft_atoi.c\
 		libft/ft_print_philo.c\

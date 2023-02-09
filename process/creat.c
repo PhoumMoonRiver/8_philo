@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 15:17:26 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/09 18:42:17 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	create_env(t_env *env)
 {
 	if (env->n_philo == 1)
 	{
-		gettimeofday(&env->p->time_eat, NULL);
 		ft_print_philo(FORK, ft_gettime(env->p), env->p->id);
 		usleep(env->p->t_die * 1000);
 		ft_print_philo(DIE, env->p->t_die, env->p->id);

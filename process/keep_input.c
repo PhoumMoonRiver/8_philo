@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:17:26 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 15:07:47 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:18:11 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_list_of_philo(int ac, char **av, t_env *env)
 		env->p->fork_left = 1;
 	else
 		env->p->fork_left = env->p->id + 1;
+	gettimeofday(&env->p->time, NULL);
 }
 
 void	keep_input_to_list(int ac, char **av, t_env *env)
