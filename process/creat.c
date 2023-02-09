@@ -6,29 +6,11 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 06:13:22 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:17:26 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
-
-void	*routine(void *tmp_input)
-{
-	t_philo *tmp;
-
-	tmp = (t_philo *)tmp_input;
-// pthread_mutex_lock(&tmp->mutex_fork);
-	printf("This is id => [%d]\n", tmp->id);
-	// routine_eat(tmp);
-	// while (1)
-	// {
-	// 	ft_print_philo(FORK, ft_gettime(tmp), tmp->id);
-	// 	ft_print_philo(DIE, ft_gettime(tmp), tmp->id);
-	// 	ft_print_philo(EAT, ft_gettime(tmp), tmp->id);
-	// }
-// pthread_mutex_unlock(&tmp->mutex_fork);
-	return (NULL);
-}
 
 int	create_mutex(t_env *env)
 {
@@ -100,9 +82,9 @@ int	create_thread(t_env *env)
 
 int	create_env(t_env *env)
 {
-	gettimeofday(&env->p->time, NULL);
 	if (env->n_philo == 1)
 	{
+		gettimeofday(&env->p->time_eat, NULL);
 		ft_print_philo(FORK, ft_gettime(env->p), env->p->id);
 		usleep(env->p->t_die * 1000);
 		ft_print_philo(DIE, env->p->t_die, env->p->id);
@@ -112,5 +94,7 @@ int	create_env(t_env *env)
 		return (1);
 	if (create_thread(env) == 1)
 		return (1);
+	pthread_create(&env->checker, NULL, &check_die, env->p);
+	pthread_join(env->checker, NULL);
 	return (0);
 }

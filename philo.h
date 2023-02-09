@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/08 06:19:29 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:06:30 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct t_philosopher_data
 	int	i;
 	int	id;
 	int head;
+	int	alive;
 	int	t_die;
 	int	t_eat;
 	int	t_sleep;
@@ -42,7 +43,7 @@ typedef struct t_philosopher_data
 	pthread_t	thread_philo;
 	pthread_mutex_t mutex_fork;
 	pthread_mutex_t mutex_door;
-	struct timeval time;
+	struct timeval time_eat;
 	struct t_philosopher_data *next;
 }	t_philo;
 
@@ -51,6 +52,7 @@ typedef struct t_enviroment
 	int	i;
 	int	n_philo;
 	t_philo	*p;
+	pthread_t	checker;
 }	t_env;
 
 /*philo*/
@@ -65,6 +67,7 @@ long long	ft_gettime(t_philo *p);
 void	init_list_of_philo(int ac, char **av, t_env *env);
 void	keep_input_to_list(int ac, char **av, t_env *env);
 void	*routine(void *env_input);
+void	*check_die(void *env);
 
 /*libf*/
 int	ft_atoi(const char *str);

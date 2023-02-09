@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/02/09 05:56:28 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/09 13:33:38 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = 	philo.c\
 		process/keep_input.c\
 		process/creat.c\
 		process/gettime.c\
+		process/die.c\
 		routine/routine_of_philo.c\
 		libft/ft_atoi.c\
 		libft/ft_print_philo.c\
@@ -47,7 +48,7 @@ b: re
 	./philo 5 100 30 30 20
 
 c: re
-	valgrind --leak-check=full --show-leak-kinds=all ./philo 1 100 50 40
+	./philo 1 100 50 40
 
 e: re
 	./philo 0 100 50 40

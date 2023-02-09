@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gettime.c                                          :+:      :+:    :+:   */
+/*   die.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 20:36:10 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 13:35:37 by njerasea         ###   ########.fr       */
+/*   Created: 2023/02/09 13:10:42 by njerasea          #+#    #+#             */
+/*   Updated: 2023/02/09 15:17:34 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-long long	ft_gettime(t_philo *p)
+void	*check_die(void *p)
 {
-	struct timeval gettime;
-	long long time;
+	t_philo *tmp;
 
-	gettimeofday(&gettime, NULL);
-	time = (gettime.tv_sec * 1000) + (gettime.tv_usec / 1000);
-	return (time - ((p->time_eat.tv_sec * 1000) + (p->time_eat.tv_usec / 1000)));
+	tmp = (t_philo *)p;
+	while (1)
+	{
+		while (tmp)
+		{
+			if (tmp->alive == 1)
+				break ;
+			tmp = tmp->next;
+		}
+	}
+	return (NULL);
 }
