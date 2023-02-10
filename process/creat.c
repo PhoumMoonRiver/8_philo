@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 18:42:17 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:06:52 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	create_mutex(t_env *env)
 	{
 		if (pthread_mutex_init(&tmp->mutex_fork, NULL) != 0)
 			return (1);
-		if (pthread_mutex_init(&tmp->mutex_door, NULL) != 0)
-			return (1);
 		tmp = tmp->next;
 		i++;
 	}
+	if (pthread_mutex_init(&env->mutex_door, NULL) != 0)
+		return (1);
 	return (0);
 }
 

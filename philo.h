@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:06:32 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/09 17:23:47 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:28:42 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ typedef struct t_philosopher_data
 	long	current_time2;
 	pthread_t	thread_philo;
 	pthread_mutex_t mutex_fork;
-	pthread_mutex_t mutex_door;
 	struct timeval time;
 	struct timeval time_eat;
+	struct t_enviroment	*tmp_env;
 	struct t_philosopher_data *next;
 }	t_philo;
 
@@ -54,6 +54,7 @@ typedef struct t_enviroment
 	int	n_philo;
 	t_philo	*p;
 	pthread_t	checker;
+	pthread_mutex_t	mutex_door;
 }	t_env;
 
 /*philo*/
@@ -64,14 +65,15 @@ int	create_mutex(t_env *env);
 int	create_env(t_env *env);
 int	create_multi_thread(t_env *env);
 int	routine_eat(t_philo *p);
+int	routine_sleep_think(t_philo *p);
 long	ft_gettime(t_philo *p);
 void	init_list_of_philo(int ac, char **av, t_env *env);
 void	keep_input_to_list(int ac, char **av, t_env *env);
 void	*routine(void *env_input);
 void	*check_die(void *env);
 void	ft_usleep_get_die(int time, int t_die, int *alive);
-void	lock_door(t_philo *p);
-void	unlock_door(t_philo *p);
+void	ft_check_time(t_philo *tmp);
+void	routine_die(t_philo *p);
 
 /*libf*/
 int	ft_atoi(const char *str);
