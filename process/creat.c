@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/10 23:06:52 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/12 20:34:19 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	create_multi_thread(t_env *env)
 	{
 		if (pthread_create((&tmp1->thread_philo), NULL, &routine, tmp1) != 0)
 			return (1);
-		usleep(10);
+		usleep(5);
 		if (!tmp1->next)
 			break ;
 		tmp1 = tmp1->next->next;
@@ -57,7 +57,7 @@ int	create_multi_thread(t_env *env)
 	{
 		if (pthread_create((&tmp2->thread_philo), NULL, &routine, tmp2) != 0)
 			return (1);
-		usleep(10);
+		usleep(5);
 		tmp2 = tmp2->next->next;
 		i += 2;
 	}
@@ -67,16 +67,21 @@ int	create_multi_thread(t_env *env)
 int	create_thread(t_env *env)
 {
 	t_philo *tmp3;
+	int	i;
 
 	tmp3 = env->p;
+	i = 1;
 	if (create_multi_thread(env) == 1)
 		return (1);
-	while (tmp3)
+	pthread_create(&env->checker, NULL, &check_die, env->p);
+	while (i <= env->n_philo)
 	{
 		if (pthread_join((tmp3->thread_philo), NULL) != 0)
 			return (1);
 		tmp3 = tmp3->next;
+		i++;
 	}
+	pthread_join(env->checker, NULL);
 	return (0);
 }
 
@@ -93,7 +98,6 @@ int	create_env(t_env *env)
 		return (1);
 	if (create_thread(env) == 1)
 		return (1);
-	pthread_create(&env->checker, NULL, &check_die, env->p);
-	pthread_join(env->checker, NULL);
+	ft_destory(env);
 	return (0);
 }

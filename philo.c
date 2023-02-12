@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 		keep_input_to_list(ac, av, &env);
 		if (create_env(&env) == 1)
 			ft_free_list(&env);
+		ft_free_list(&env);
 	}
 	else
 		printf("input not correct\n");

@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_list.c                                     :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 06:11:05 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/12 17:33:21 by njerasea         ###   ########.fr       */
+/*   Created: 2023/02/12 15:47:51 by njerasea          #+#    #+#             */
+/*   Updated: 2023/02/12 20:18:23 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	ft_free_list(t_env *env)
+void	ft_destory(t_env *env)
 {
-	t_philo *first;
 	int	i;
 
 	i = 1;
-	if (env->p)
+	while (i <= env->n_philo)
 	{
-		while (i <= env->n_philo)
-		{
-			first = env->p->next;
-			free (env->p);
-			if (!env->p)
-				break ;
-			env->p = first;
-			i++;
-		}
+		pthread_mutex_destroy(&env->p->mutex_fork);
+		env->p = env->p->next;
+		i++;
 	}
-	return (0);
+	pthread_mutex_destroy(&env->mutex_door);
+}
+
+void	ft_unlock(t_philo *p)
+{
+	int	i;
+
+	i = 1;
+	while (i <= p->tmp_env->n_philo)
+	{
+		pthread_mutex_unlock(&p->mutex_fork);
+		pthread_mutex_unlock(&p->next->mutex_fork);
+		i++;
+		p = p->next;
+	}
+	pthread_mutex_unlock(&p->tmp_env->mutex_door);
 }
