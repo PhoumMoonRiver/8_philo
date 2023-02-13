@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creat.c                                            :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 16:31:36 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/12 20:34:19 by njerasea         ###   ########.fr       */
+/*   Created: 2023/02/13 21:13:34 by njerasea          #+#    #+#             */
+/*   Updated: 2023/02/13 21:18:52 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	create_mutex(t_env *env)
 {
+	int		i;
 	t_philo	*tmp;
-	int	i;
 
 	tmp = env->p;
 	i = 1;
@@ -26,48 +26,13 @@ int	create_mutex(t_env *env)
 		tmp = tmp->next;
 		i++;
 	}
-	if (pthread_mutex_init(&env->mutex_door, NULL) != 0)
-		return (1);
-	return (0);
-}
-
-int	create_multi_thread(t_env *env)
-{
-	t_philo *tmp1;
-	t_philo *tmp2;
-	int	i;
-
-	tmp1 = env->p;
-	tmp2 = env->p;
-	i = 1;
-	while (i <= env->n_philo)
-	{
-		if (pthread_create((&tmp1->thread_philo), NULL, &routine, tmp1) != 0)
-			return (1);
-		usleep(5);
-		if (!tmp1->next)
-			break ;
-		tmp1 = tmp1->next->next;
-		i += 2;
-	}
-	i = 2;
-	usleep(50);
-	tmp2 = tmp2->next;
-	while (i <= env->n_philo)
-	{
-		if (pthread_create((&tmp2->thread_philo), NULL, &routine, tmp2) != 0)
-			return (1);
-		usleep(5);
-		tmp2 = tmp2->next->next;
-		i += 2;
-	}
 	return (0);
 }
 
 int	create_thread(t_env *env)
 {
-	t_philo *tmp3;
-	int	i;
+	int		i;
+	t_philo	*tmp3;
 
 	tmp3 = env->p;
 	i = 1;
@@ -81,6 +46,7 @@ int	create_thread(t_env *env)
 		tmp3 = tmp3->next;
 		i++;
 	}
+	tmp3->tmp_env->unlock = 0;
 	pthread_join(env->checker, NULL);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 15:47:51 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/12 20:18:23 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:39:07 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_destory(t_env *env)
 		env->p = env->p->next;
 		i++;
 	}
-	pthread_mutex_destroy(&env->mutex_door);
 }
 
 void	ft_unlock(t_philo *p)
@@ -38,5 +37,4 @@ void	ft_unlock(t_philo *p)
 		i++;
 		p = p->next;
 	}
-	pthread_mutex_unlock(&p->tmp_env->mutex_door);
 }

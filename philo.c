@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      :q:::::::   */
+/*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 14:06:14 by njerasea          #+#    #+#             */
-/*   Updated: 2023/01/23 20:43:56 by njerasea         ###   ########.fr       */
+/*   Created: 2023/02/13 20:59:48 by njerasea          #+#    #+#             */
+/*   Updated: 2023/02/13 20:59:51 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int ac, char **av)
 		keep_input_to_list(ac, av, &env);
 		if (create_env(&env) == 1)
 			ft_free_list(&env);
-		ft_free_list(&env);
+		else
+			ft_free_list(&env);
 	}
 	else
 		printf("input not correct\n");

@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/02/12 20:47:36 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/13 21:12:16 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = philo
 SRCS = 	philo.c\
 		error_check.c\
 		process/keep_input.c\
-		process/creat.c\
+		process/create.c\
+		process/create_multi_thread.c\
 		process/gettime.c\
 		process/die.c\
 		process/clear.c\
@@ -50,7 +51,7 @@ b: re
 	./philo 5 800 200 200
 
 c: re
-	./philo 5 800 200 200 7
+	./philo 5 800 200 200 2
 
 d: re
 	./philo 4 410 200 200
@@ -58,10 +59,16 @@ d: re
 e: re
 	./philo 4 310 200 100
 
-e: re
+f: re
 	./philo 0 100 50 40
 
+g: re
+	./philo 4 400 100 100
+
+h: re
+	./philo 50 300 100 100 4
+
 v: re
-	valgrind --leak-check=full --show-leak-kinds=all ./philo 3 410 200 200
+	valgrind --leak-check=full --show-leak-kinds=all ./philo 4 310 200 200
 
 .PHONY: all clean fclean re

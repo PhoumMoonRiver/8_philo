@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:17:26 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/12 16:50:54 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:27:45 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,21 @@ void	init_list_of_philo(int ac, char **av, t_env *env)
 	gettimeofday(&env->p->time_eat, NULL);
 }
 
-void	keep_input_to_list(int ac, char **av, t_env *env)
+void	keep_input_to_env(char **av, t_env *env)
 {
-	t_philo *first;
-	t_philo *past;
-
 	env->n_philo = ft_atoi(av[1]);
 	env->i = 1;
+	env->unlock = 1;
+	env->eat_full = 1;
 	env->sign_die = 0;
+}
+
+void	keep_input_to_list(int ac, char **av, t_env *env)
+{
+	t_philo	*first;
+	t_philo	*past;
+
+	keep_input_to_env(av, env);
 	while (env->i <= env->n_philo)
 	{
 		env->p = (t_philo *)malloc(sizeof(t_philo));
