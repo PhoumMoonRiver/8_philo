@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:43:13 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/08 06:00:05 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:46:38 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	check_digit(char **av)
 	while (av[i])
 	{
 		j = 0;
+		if (av[i][j] == '\0')
+			return (1);
 		while (av[i][j])
 		{
 			if (av[i][j] < '0' || av[i][j] > '9')

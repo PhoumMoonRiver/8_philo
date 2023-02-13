@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 14:09:44 by njerasea          #+#    #+#              #
-#    Updated: 2023/02/13 21:12:16 by njerasea         ###   ########.fr        #
+#    Updated: 2023/02/13 21:55:23 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,12 +63,15 @@ f: re
 	./philo 0 100 50 40
 
 g: re
-	./philo 4 400 100 100
+	./philo 4 400 "" 100
 
 h: re
 	./philo 50 300 100 100 4
 
-v: re
+i: re
 	valgrind --leak-check=full --show-leak-kinds=all ./philo 4 310 200 200
+
+j: re
+	valgrind ./philo 5 800 200 200 2
 
 .PHONY: all clean fclean re
